@@ -32,3 +32,9 @@ export const getAllGroupPosts = async (groupName: string): Promise<Post[]> => {
 
   return posts;
 }
+
+export const getPersonalPosts = async (): Promise<Post[]> => {
+  const {data: posts} = await reverbClientWithAuth.get<Post[]>('/api/post/get-personal-posts');
+
+  return posts;
+}

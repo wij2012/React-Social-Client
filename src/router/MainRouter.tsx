@@ -12,6 +12,7 @@ import GroupPage from "../features/group/GroupPage";
 import { CreateGroupPage } from "../features/group/CreateGroupPage";
 import { EditGroupPage } from "../features/group/EditGroupPage"
 import FollowingFeed from "../features/feed/FollowingFeed";
+import PersonalFeed from "../features/feed/PersonalFeed";
 
 
 interface MainRouterProps{
@@ -33,6 +34,9 @@ const MainRouter:React.FC<MainRouterProps> = ({loggedIn}:{loggedIn:string}) => {
     toReturn =
       <div id="container-to-remove">
         <Switch>
+        <Route path="/feed/personal">
+            <PersonalFeed/>
+          </Route>
           <Route path="/feed/following">
             <FollowingFeed/>
           </Route>
