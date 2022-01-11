@@ -16,8 +16,8 @@ export default function Register() {
   // Registering user into backend database
   const registerUser = (token: string) => {
 
-  const url = 'http://Reverbapiapplication-env.eba-qjeevjhg.us-west-1.elasticbeanstalk.com/api/user/register';
-  // const url = 'http://localhost:5000/api/user/register';
+  //const url = 'http://Reverbapiapplication-env.eba-qjeevjhg.us-west-1.elasticbeanstalk.com/api/user/register';
+   const url = 'http://localhost:5000/api/user/register';
 
     const header = {
       'Authorization': token,
@@ -65,7 +65,7 @@ export default function Register() {
                 <Form id="inputLogin">
                   <Form.Group id="email">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" ref={emailRef} required />
+                    <Form.Control type="email" ref={emailRef} required autoFocus/>
                   </Form.Group>
                   <Form.Group id="password">
                     <Form.Label>Password</Form.Label>

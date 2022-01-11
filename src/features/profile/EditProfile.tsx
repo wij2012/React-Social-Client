@@ -4,6 +4,7 @@ import { Card, Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getProfileAsync, selectProfile, updateProfileAsync } from './profileSlice';
+import Upload_Picture from './UploadPicture';
 
 export let util = { update: (e: any) => { }, cancel: (e: any) => { } };
 
@@ -65,7 +66,7 @@ export default function EditProfile() {
 
                                 <div className="form_input-group">
                                     <label htmlFor="about_me">About Me</label>
-                                    <textarea className="form_input" rows={10} name="about_me" placeholder="Your about me" value={input.about_me}
+                                    <textarea className="form_input" rows={9} name="about_me" placeholder="Your about me" value={input.about_me}
                                         onChange={handleChange}  > </textarea>
                                 </div>
                             </Col>
@@ -88,19 +89,20 @@ export default function EditProfile() {
                                     <input className="form_input" type="textbox" name="location" placeholder="Location" value={input.location}
                                         onChange={handleChange} required />
                                 </div>
-
+                                
+                                <br /> <br />
                                 <div className="form_input-group">
-                                    <label htmlFor="profile_img">Select Profile Image</label>
-                                    <input className="form_input" type="text" name="profile_img" placeholder="Profile Image url" value={input.profile_img}
-                                        onChange={handleChange} required />
+                                <label htmlFor="profile_img">Select Profile Image</label>
+                                    <div className='form_input'>
+                                        <Upload_Picture targetPicture="profile"/>
+                                    </div>
                                 </div>
-
                                 <div className="form_input-group">
-                                    <label htmlFor="header_img">Select Header Image</label>
-                                    <input className="form_input" type="text" name="header_img" placeholder="Header Image url" value={input.header_img}
-                                        onChange={handleChange} required />
+                                <label htmlFor="header_img">Select Header Image</label>
+                                    <div className='form_input'>
+                                        <Upload_Picture targetPicture="header"/>
+                                    </div>
                                 </div>
-                                <br /><br />
                             </Col>
                         </Row>
                         <Row id="editButtonsRow">

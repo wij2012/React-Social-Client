@@ -8,6 +8,11 @@ import { useAppDispatch } from "../app/hooks";
 import { logout } from '../features/login/authSlice'
 import ProfilePage from "../features/profile/ProfilePage";
 import EditProfilePage from "../features/profile/EditProfilePage";
+import GroupPage from "../features/group/GroupPage";
+import { CreateGroupPage } from "../features/group/CreateGroupPage";
+import { EditGroupPage } from "../features/group/EditGroupPage"
+import FollowingFeed from "../features/feed/FollowingFeed";
+import PersonalFeed from "../features/feed/PersonalFeed";
 
 
 interface MainRouterProps{
@@ -27,8 +32,14 @@ const MainRouter:React.FC<MainRouterProps> = ({loggedIn}:{loggedIn:string}) => {
   let toReturn = <></>;
   if (loggedIn) {
     toReturn =
-      <div>
+      <div id="container-to-remove">
         <Switch>
+        <Route path="/feed/personal">
+            <PersonalFeed/>
+          </Route>
+          <Route path="/feed/following">
+            <FollowingFeed/>
+          </Route>
           <Route path="/profile/:id">
             <ProfilePage beep={false}/>
           </Route>
@@ -38,12 +49,22 @@ const MainRouter:React.FC<MainRouterProps> = ({loggedIn}:{loggedIn:string}) => {
           <Route path="/editProfile">
             <EditProfilePage/>
           </Route>
+          <Route path="/createGroup">
+            <CreateGroupPage/>
+          </Route>
+          <Route path="/group/:groupName">
+            <GroupPage/>
+          </Route>
+          <Route path="/editGroup/:groupName">
+            <EditGroupPage/>
+          </Route>
           <Route path="/logout">
             {doLogout}
           </Route>
-          <Route path="/">
-            <Feed/>
+          <Route path="/feed">
+            <Feed isGroup={false}/>
           </Route>
+          
         </Switch>
       </div>
   }
