@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Post } from './post';
-import { createGroupPost, createPost, getAllGroupPosts, getAllPosts, getFollowingPosts} from "./post.api";
+import { createGroupPost, createPost, getAllGroupPosts, getAllPosts, getFollowingPosts, getPersonalPosts} from "./post.api";
 import { store } from "../../app/store";
 import { ActionCodeOperation } from "firebase/auth";
 
@@ -31,6 +31,17 @@ export const getFollowPostsAsync = createAsyncThunk<Post[], object>(
     async (nothing, thunkAPI) => {
         try {
             return await getFollowingPosts();
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error);
+        }
+    }
+);
+
+export const getPersonalPostsAsync = createAsyncThunk<Post[], object>(
+    'post/getpersonal/async',
+    async (nothing, thunkAPI) => {
+        try {
+            return await getPersonalPosts();
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
         }
@@ -95,10 +106,15 @@ export const postSlice = createSlice({
             // console.log(action.error);
         })
         .addCase(getGroupPostsAsync.fulfilled, (state, action) => {
+            console.log(action.payload);
             return action.payload;
         })
         .addCase(getFollowPostsAsync.rejected, (state, action) => {
             // state.push(action.payload);
+        })
+        .addCase(getPersonalPostsAsync.fulfilled, (state, action) => {
+            console.log(action.payload);
+            return action.payload;
         })
     }
 });

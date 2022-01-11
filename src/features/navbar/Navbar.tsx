@@ -76,6 +76,14 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ loggedIn }: { loggedIn: s
 
           <button id="theme-button" onClick={() => switchTheme()}>🌞/🌜</button>
 
+          <NavLink id="personalFeed" className="navbar-link" as={Link} to={"/feed/personal"} eventKey="home">
+           Personal Feed
+          </NavLink>
+          
+          <NavLink id="followingFeed" className="navbar-link" as={Link} to={"/feed/following"} eventKey="home">
+           Follow Feed
+          </NavLink>
+
           <NavLink as={Link} to={"/profile"} id="profileLink" className="navbar-link" eventKey="profile-link" onClick={() => history.push("/profile")}>
             Profile
           </NavLink>
@@ -86,10 +94,6 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ loggedIn }: { loggedIn: s
 
           <NavLink as={Link} to={"/logout"} id="logoutLink" className="navbar-link" eventKey="logout-link">
             Logout
-          </NavLink>
-
-          <NavLink id="followingFeed" className="navbar-link" as={Link} to={"/feed/following"} eventKey="home">
-           Follow Feed
           </NavLink>
 
         </div>
