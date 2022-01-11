@@ -703,9 +703,10 @@ body,
 }
 
 /* Used to make the navbar sticky to the left, Personally created that div to make the sticky work, why does it work??? who knows*/
-#AnotherContainerToRemove {
+#NavbarContainer {
   position: sticky;
   top: 0;
+  height:100vh;
 }
 
 .form-control,
