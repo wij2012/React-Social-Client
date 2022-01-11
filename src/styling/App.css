@@ -102,7 +102,6 @@ element.item(i).classList.toggle("dark-mode");
   font-size: 3vh;
   line-height: 30px;
   box-shadow: 0px 0px 2px var(--background-grey);
-  position: sticky;
 }
 
 #navbar-links {
