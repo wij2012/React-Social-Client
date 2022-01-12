@@ -7,7 +7,6 @@ const reverbClient = axios.create( {
   headers: {
     'Content-Type': 'application/json'
   },
-  withCredentials: true,
 } );
 
 const reverbClientWithAuth = axios.create( {
