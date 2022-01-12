@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Feed from "../features/feed/Feed";
 import Login from "../features/login/Login";
 import Register from "../features/register/Register";
@@ -13,7 +13,6 @@ import { CreateGroupPage } from "../features/group/CreateGroupPage";
 import { EditGroupPage } from "../features/group/EditGroupPage"
 import FollowingFeed from "../features/feed/FollowingFeed";
 import PersonalFeed from "../features/feed/PersonalFeed";
-
 
 interface MainRouterProps{
   loggedIn:string
@@ -34,12 +33,7 @@ const MainRouter:React.FC<MainRouterProps> = ({loggedIn}:{loggedIn:string}) => {
     toReturn =
       <div id="container-to-remove">
         <Switch>
-        <Route path="/feed/personal">
-            <PersonalFeed/>
-          </Route>
-          <Route path="/feed/following">
-            <FollowingFeed/>
-          </Route>
+          <Redirect from="/user_profile/:id" to='/profile/:id'/>
           <Route path="/profile/:id">
             <ProfilePage beep={false}/>
           </Route>
@@ -61,10 +55,15 @@ const MainRouter:React.FC<MainRouterProps> = ({loggedIn}:{loggedIn:string}) => {
           <Route path="/logout">
             {doLogout}
           </Route>
+          <Route path="/feed/personal">
+            <PersonalFeed/>
+          </Route>
+          <Route path="/feed/following">
+            <FollowingFeed/>
+          </Route>
           <Route path="/feed">
             <Feed isGroup={false}/>
           </Route>
-          
         </Switch>
       </div>
   }

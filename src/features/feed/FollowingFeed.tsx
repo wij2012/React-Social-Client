@@ -68,12 +68,6 @@ const FollowingFeed = () => {
       <SearchBar />
       <div id="postColumn">
         <div id="feedButtons"> 
-          <Button data-testid="postButton" id="postBtn" className='feed-btns' variant="primary" onClick={() => util.leavePost()}>
-            + Create Post
-          </Button>
-          <Button data-testid="refreshButton" id="refreshBtn" className='feed-btns' variant="primary" onClick={() => util.updateAll()}>
-            <img id="refresh-icon" src={RefreshIcon} /> Refresh
-          </Button>
         </div>
         <SubmitPost
           setPost={setPost}
