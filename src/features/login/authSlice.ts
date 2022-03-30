@@ -1,7 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { Token } from "./token";
-import { getToken } from './token.api'
-import { Credentials } from "./credentials";
 
 export type TokenState = Token[];
 
