@@ -9,49 +9,19 @@ const initialState: TokenState = [{
     token: ""
 }]
 
-export const setTokenAsync = createAsyncThunk<Token, Credentials>(
-    'token/get/async',
-    async ( cred: Credentials, thunkAPI ) =>
-    {
-        try
-        {
-            return await getToken( cred.email, cred.password );
-        } catch ( error )
-        {
-            return thunkAPI.rejectWithValue( error );
-        }
-    }
-);
-
 export const authSlice = createSlice( {
     name: "auth",
     initialState: initialState,
 
     reducers: {
-        logout: ( state ) =>
+        logout: (state) =>
         {
-            state.pop()
-            state.push( initialState[0] )
+          state[0] = initialState[0];
         },
-    },
-    extraReducers: ( builder ) =>
-    {
-        builder
-            .addCase( setTokenAsync.pending, ( state ) =>
-            {
-                // do nothing
-            } )
-            .addCase( setTokenAsync.fulfilled, ( state, action ) =>
-            {
-                // console.log( "From setTokenAsync extraReducer: ", action.payload.token );
-                return [action.payload];
-            } )
-            .addCase( setTokenAsync.rejected, ( state, action ) =>
-            {
-                // console.log( action.error );
-            } )
+        login: (state, action) => {
+          state[0].token = action.payload;
+        }
     }
-
-} );
-export const { logout } = authSlice.actions;
+});
+export const { logout, login } = authSlice.actions;
 export default authSlice.reducer;

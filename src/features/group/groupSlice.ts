@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { User } from "firebase/auth";
 import { RootState, store } from "../../app/store";
-import { setTokenAsync } from "../login/authSlice";
 import { Group } from "./Group"
 import { getGroupByName } from "./Group.api";
 

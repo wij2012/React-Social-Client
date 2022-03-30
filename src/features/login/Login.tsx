@@ -2,7 +2,8 @@ import { useRef } from 'react'
 import { Form, Button, Card } from 'react-bootstrap'
 import { Container, Row, Col } from 'react-bootstrap'
 import { useAppDispatch } from '../../app/hooks'
-import { setTokenAsync } from './authSlice'
+import { getToken } from './token.api'
+import { login } from './authSlice'
 import { reverbClientWithAuth } from '../../remote/reverb-api/reverbClient'
 import { setUserAsync } from './userSlice'
 import { useHistory } from 'react-router-dom'
@@ -27,10 +28,17 @@ export default function Login() {
       const password: string = passwordRef.current.value;
 
       // Token is set to store on login
-      await dispatch(setTokenAsync({ email, password }));
+      const tokenObj = await getToken(email, password);
+      const token = tokenObj.token;
+      
+      try {
+        await dispatch(login(token));
+      } catch (err) {
+        console.log(err);
+      }
+
       await dispatch(setUserAsync({}));
       history.push("/feed")
-
     }
   }
 
