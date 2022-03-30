@@ -29,10 +29,9 @@ export default function Login() {
 
       // Token is set to store on login
       const tokenObj = await getToken(email, password);
-      const token = tokenObj.token;
       
       try {
-        await dispatch(login(token));
+        dispatch(login(tokenObj.token));
       } catch (err) {
         console.log(err);
       }
