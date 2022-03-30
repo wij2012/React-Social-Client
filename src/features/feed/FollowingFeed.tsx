@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFollowPostsAsync, postPostAsync, selectPosts, update } from '../post/postSlice';
+import { postPostAsync, selectPosts, update } from '../post/postSlice';
 import { getFollowingPosts } from '../post/post.api';
 import { createComment } from '../comment/comment.api';
 import { initialPost } from '../post/post';

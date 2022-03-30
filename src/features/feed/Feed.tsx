@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGroupPostsAsync, postGroupPostAsync, postPostAsync, selectPosts, update } from '../post/postSlice';
+import { postGroupPostAsync, postPostAsync, selectPosts, update } from '../post/postSlice';
 import { getAllGroupPosts, getAllPosts } from '../post/post.api';
 import { createComment } from '../comment/comment.api';
 import { initialPost } from '../post/post';

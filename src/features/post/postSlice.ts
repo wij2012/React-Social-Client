@@ -7,46 +7,6 @@ export type PostState = Post[];
 
 const initialState: PostState = [];
 
-export const getPostsAsync = createAsyncThunk<Post[], object>(
-    'post/get/async',
-    async (nothing, thunkAPI) => {
-        try {
-            return await getAllPosts();
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error);
-        }
-    }
-);
-
-export const getGroupPostsAsync = createAsyncThunk(
-    'post/getgroups/async',
-    async (groupName: string | undefined, thunkAPI) => {
-            return await getAllGroupPosts(groupName as string);
-    }
-)
-
-export const getFollowPostsAsync = createAsyncThunk<Post[], object>(
-    'post/getfollow/async',
-    async (nothing, thunkAPI) => {
-        try {
-            return await getFollowingPosts();
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error);
-        }
-    }
-);
-
-export const getPersonalPostsAsync = createAsyncThunk<Post[], object>(
-    'post/getpersonal/async',
-    async (nothing, thunkAPI) => {
-        try {
-            return await getPersonalPosts();
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error);
-        }
-    }
-);
-
 export const postPostAsync = createAsyncThunk<Post, Post>(
     'post/post/async',
     async (neoPost: Post, thunkAPI) => {
@@ -86,41 +46,14 @@ export const postSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-        .addCase(getPostsAsync.pending, (state) => {
-            // do nothing
-        })
         .addCase(postPostAsync.pending, (state) => {
             // do nothing
-        })
-        .addCase(getFollowPostsAsync.pending, (state) => {
-            
-        })
-        .addCase(getPostsAsync.fulfilled, (state, action) => {
-            return action.payload;
         })
         .addCase(postPostAsync.fulfilled, (state, action) => {
             // state.push(action.payload);
         })
-        .addCase(getFollowPostsAsync.fulfilled, (state, action) => {
-            return action.payload;
-            // return action.payload;
-        })
-        .addCase(getPostsAsync.rejected, (state, action) => {
-            // console.log(action.error);
-        })
         .addCase(postPostAsync.rejected, (state, action) => {
             // console.log(action.error);
-        })
-        .addCase(getGroupPostsAsync.fulfilled, (state, action) => {
-            console.log(action.payload);
-            return action.payload;
-        })
-        .addCase(getFollowPostsAsync.rejected, (state, action) => {
-            // state.push(action.payload);
-        })
-        .addCase(getPersonalPostsAsync.fulfilled, (state, action) => {
-            console.log(action.payload);
-            return action.payload;
         })
     }
 });
