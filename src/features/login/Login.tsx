@@ -36,7 +36,7 @@ export default function Login() {
       } catch (err) {
         console.log(err);
       }
-
+      
       await dispatch(setUserAsync({}));
       history.push("/feed")
     }
