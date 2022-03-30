@@ -74,6 +74,8 @@ export const postSlice = createSlice({
     initialState: initialState,
     reducers: {
         update: (state, action) => {
+          state.length = 0;
+          
           action.payload.forEach((index: Post) => {
             state.push(index);
           });

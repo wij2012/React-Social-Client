@@ -61,9 +61,7 @@ function Feed(props: {isGroup: boolean}) {
     }];
     dispatch(update(posts));
       
-    setShouldUpdateLikes([!shouldUpdateLikes[0]]); // :^) 
-    
-    // console.log("Updated feed");
+    setShouldUpdateLikes([!shouldUpdateLikes[0]]);
   }
 
   const [comment, setComment] = useState(initialComment);
