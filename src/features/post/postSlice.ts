@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Post } from './post';
 import { createGroupPost, createPost, getAllGroupPosts, getAllPosts, getFollowingPosts, getPersonalPosts} from "./post.api";
 import { store } from "../../app/store";
-import { ActionCodeOperation } from "firebase/auth";
 
 export type PostState = Post[];
 
@@ -74,6 +73,11 @@ export const postSlice = createSlice({
     name: 'posts',
     initialState: initialState,
     reducers: {
+        update: (state, action) => {
+          action.payload.forEach((index: Post) => {
+            state.push(index);
+          });
+        },
         clear: (state) => {
             state.length = 0;
         }
@@ -124,6 +128,6 @@ export const selectPosts = (state: Rootstate) => {
     return state.posts
 }
 
-export const { clear } = postSlice.actions;
+export const { update, clear } = postSlice.actions;
 
 export default postSlice.reducer;

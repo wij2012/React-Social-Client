@@ -26,7 +26,6 @@ export default function Login() {
       const email: string = emailRef.current.value;
       const password: string = passwordRef.current.value;
 
-      // Token is set to store on login
       try {
         const tokenObj = await getToken(email, password);
         dispatch(login(tokenObj.token));
@@ -42,7 +41,7 @@ export default function Login() {
           email
         };
         dispatch(updateUser(userObj));
-        history.push("/feed")
+        history.push("/feed");
 
       } catch (err) {
         console.log(err);
