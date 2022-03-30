@@ -7,32 +7,13 @@ export type PostState = Post[];
 
 const initialState: PostState = [];
 
-export const postPostAsync = createAsyncThunk<Post, Post>(
-    'post/post/async',
-    async (neoPost: Post, thunkAPI) => {
-        try {
-            return await createPost(neoPost);
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error);
-        }
-    }
-);
-
-export const postGroupPostAsync = createAsyncThunk<Post, Post>(
-    'post/post/async',
-    async (neoPost: Post, thunkAPI) => {
-        try {
-            return await createGroupPost(neoPost);
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error);
-        }
-    }
-);
-
 export const postSlice = createSlice({
     name: 'posts',
     initialState: initialState,
     reducers: {
+        add: (state, action) => {
+          state.push(action.payload);
+        },
         update: (state, action) => {
           state.length = 0;
           
@@ -43,18 +24,6 @@ export const postSlice = createSlice({
         clear: (state) => {
             state.length = 0;
         }
-    },
-    extraReducers: (builder) => {
-        builder
-        .addCase(postPostAsync.pending, (state) => {
-            // do nothing
-        })
-        .addCase(postPostAsync.fulfilled, (state, action) => {
-            // state.push(action.payload);
-        })
-        .addCase(postPostAsync.rejected, (state, action) => {
-            // console.log(action.error);
-        })
     }
 });
 
@@ -63,6 +32,6 @@ export const selectPosts = (state: Rootstate) => {
     return state.posts
 }
 
-export const { update, clear } = postSlice.actions;
+export const { add, update, clear } = postSlice.actions;
 
 export default postSlice.reducer;

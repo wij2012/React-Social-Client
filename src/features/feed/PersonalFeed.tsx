@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import SubmitPost from '../post/SubmitPost';
-import { postPostAsync, selectPosts, update } from '../post/postSlice';
-import { getPersonalPosts } from '../post/post.api';
+import { selectPosts, add, update } from '../post/postSlice';
+import { getPersonalPosts, createPost } from '../post/post.api';
 import PostComponent from '../post/PostComponent';
 import SubmitComment from '../comment/SubmitComment';
 import { createComment } from '../comment/comment.api';
@@ -71,7 +71,21 @@ const PersonalFeed = () => {
   }
 
   util.dispatchPost = () => {
-    dispatch(postPostAsync(post));
+    // const createdPost = await createPost(post);
+    const createdPost = {
+      id: "123445",
+      title: "title",
+      postText: "some text here",
+      contentLink: "",
+      contentType: "",
+      date: new Date(),
+      comments: [],
+      authorID: "Aidan",
+      groupID: "",
+      groupName: ""
+    };
+    
+    dispatch(add(createdPost));
   }
 
   useEffect(() => {

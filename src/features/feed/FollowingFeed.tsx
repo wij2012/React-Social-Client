@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { postPostAsync, selectPosts, update } from '../post/postSlice';
-import { getFollowingPosts } from '../post/post.api';
+import { selectPosts, add, update } from '../post/postSlice';
+import { getFollowingPosts, createPost } from '../post/post.api';
 import { createComment } from '../comment/comment.api';
 import { initialPost } from '../post/post';
 import { initialComment } from '../comment/comment';
@@ -73,7 +73,21 @@ const FollowingFeed = () => {
   }
 
   util.dispatchPost = () => {
-    dispatch(postPostAsync(post));
+    // const createdPost = await createPost(post);
+    const createdPost = {
+      id: "123445",
+      title: "title",
+      postText: "some text here",
+      contentLink: "",
+      contentType: "",
+      date: new Date(),
+      comments: [],
+      authorID: "Aidan",
+      groupID: "",
+      groupName: ""
+    };
+    
+    dispatch(add(createdPost));
   }
 
   useEffect(() =>{

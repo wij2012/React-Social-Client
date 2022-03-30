@@ -11,7 +11,7 @@ import { getProfileByIdAsync } from "../profile/profileSlice";
 import { async } from "@firebase/util";
 
 
-const PostComponent =  ({ shouldUpdateLikes, post, leaveComment }: 
+const  PostComponent =  ({ shouldUpdateLikes, post, leaveComment }: 
     { shouldUpdateLikes: boolean[], post: Post, leaveComment: any }) =>  {
 
     const initialLikes: number = 0;
