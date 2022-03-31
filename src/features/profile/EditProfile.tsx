@@ -38,8 +38,8 @@ export default function EditProfile() {
         e.preventDefault();
         
         try {
-          // const updatedProfile = await updateProfile(input);
-          const updatedProfile = input;
+          const updatedProfile = await updateProfile(input);
+        //   const updatedProfile = input;
           dispatch(setProfile(updatedProfile));
           history.push('/profile');
         } catch (err) {

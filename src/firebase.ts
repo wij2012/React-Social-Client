@@ -1,17 +1,15 @@
 import firebase from 'firebase/compat/app'
 import { getAuth } from "firebase/auth"
 
-
 const app = firebase.initializeApp( {
-	apiKey: "AIzaSyC-14-kLV-wHsqiuEPOSlxaDk_zjdI0QSY",
-	authDomain: "react-social-client.firebaseapp.com",
-	projectId: "react-social-client",
-	storageBucket: "react-social-client.appspot.com",
-	messagingSenderId: "725630122288",
-	appId: "1:725630122288:web:523cd66b0d45084feff0f5",
-
+	apiKey: "AIzaSyBReZ6rIEQJPYModM-eLP0R8kMynXzzEoI",
+	authDomain: "react-social-client-12420.firebaseapp.com",
+	projectId: "react-social-client-12420",
+	storageBucket: "react-social-client-12420.appspot.com",
+	messagingSenderId: "75724424160",
+	appId: "1:75724424160:web:c2df380c469cc44267e185"
 } )
-  
+
 
 export const auth = getAuth( app );
 
