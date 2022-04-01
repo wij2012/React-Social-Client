@@ -36,31 +36,31 @@ const MainRouter= ({loggedIn}: MainRouterProps) => {
         <Switch>
           <Redirect from="/user_profile/:id" to='/profile/:id'/>
           <Route path="/profile/:id">
-            <ProfilePage beep={false}/>
+            <ProfilePage beep={false} />
           </Route>
           <Route path="/profile">
-            <ProfilePage beep={true}/>
+            <ProfilePage beep={true} />
           </Route>
           <Route path="/editProfile">
-            <EditProfilePage/>
+            <EditProfilePage />
           </Route>
           <Route path="/createGroup">
-            <CreateGroupPage/>
+            <CreateGroupPage />
           </Route>
           <Route path="/group/:groupName">
-            <GroupPage/>
+            <GroupPage />
           </Route>
           <Route path="/editGroup/:groupName">
-            <EditGroupPage/>
+            <EditGroupPage />
           </Route>
           <Route path="/logout">
             {doLogout}
           </Route>
           <Route path="/feed/personal">
-            <PersonalFeed/>
+            <PersonalFeed />
           </Route>
           <Route path="/feed/following">
-            <FollowingFeed/>
+            <FollowingFeed />
           </Route>
           <Route path="/feed">
             <Feed isGroup={false}/>
