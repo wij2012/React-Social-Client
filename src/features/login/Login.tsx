@@ -35,11 +35,11 @@ export default function Login() {
       }
 
       try {
-        // const userObj = await getUser();
-        const userObj = {
-          id: "123445",
-          email
-        };
+        const userObj = await getUser();
+        // const userObj = {
+        //   id: "123445",
+        //   email
+        // };
         dispatch(updateUser(userObj));
         history.push("/feed");
 

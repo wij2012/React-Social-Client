@@ -40,25 +40,25 @@ function Feed(props: {isGroup: boolean}) {
 
   const group = useSelector(selectGroup);
 
-  util.updateAll = (isGroup: boolean) => {
+  util.updateAll = async (isGroup: boolean) => {
     let posts;
     if (isGroup) {
-      // posts = await getAllGroupPosts(group.name);
+       posts = await getAllGroupPosts(group.name);
     } else {
-      // posts = await getAllPosts();
+       posts = await getAllPosts();
     }
-    posts = [{
-      id: "123445",
-      title: "title",
-      postText: "some text here",
-      contentLink: "",
-      contentType: "",
-      date: new Date(),
-      comments: [],
-      authorID: "Aidan",
-      groupID: "",
-      groupName: ""
-    }];
+    // posts = [{
+    //   id: "123445",
+    //   title: "title",
+    //   postText: "some text here",
+    //   contentLink: "",
+    //   contentType: "",
+    //   date: new Date(),
+    //   comments: [],
+    //   authorID: "Aidan",
+    //   groupID: "",
+    //   groupName: ""
+    // }];
     
     dispatch(update(posts));
       
@@ -85,19 +85,19 @@ function Feed(props: {isGroup: boolean}) {
 
   util.dispatchPost = async (isGroup) => {
     let createdPost;
-    // isGroup ? createdPost = await createGroupPost(post) : createdPost = await createPost(post);
-    createdPost = {
-      id: "123445",
-      title: "title",
-      postText: "some text here",
-      contentLink: "",
-      contentType: "",
-      date: new Date(),
-      comments: [],
-      authorID: "Aidan",
-      groupID: "",
-      groupName: ""
-    };
+     isGroup ? createdPost = await createGroupPost(post) : createdPost = await createPost(post);
+    // createdPost = {
+    //   id: "123445",
+    //   title: "title",
+    //   postText: "some text here",
+    //   contentLink: "",
+    //   contentType: "",
+    //   date: new Date(),
+    //   comments: [],
+    //   authorID: "Aidan",
+    //   groupID: "",
+    //   groupName: ""
+    // };
 
     dispatch(add(createdPost));
   }

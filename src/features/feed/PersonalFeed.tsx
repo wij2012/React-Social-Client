@@ -33,19 +33,19 @@ const PersonalFeed = () => {
   const [shouldUpdateLikes, setShouldUpdateLikes] = useState([false]);
 
   util.updateAll = async () => {
-    // const posts = await getPersonalPosts();
-    const posts = [{
-      id: "123445",
-      title: "title",
-      postText: "some text here",
-      contentLink: "",
-      contentType: "",
-      date: new Date(),
-      comments: [],
-      authorID: "Aidan",
-      groupID: "",
-      groupName: ""
-    }];
+    const posts = await getPersonalPosts();
+    // const posts = [{
+    //   id: "123445",
+    //   title: "title",
+    //   postText: "some text here",
+    //   contentLink: "",
+    //   contentType: "",
+    //   date: new Date(),
+    //   comments: [],
+    //   authorID: "Aidan",
+    //   groupID: "",
+    //   groupName: ""
+    // }];
     
     dispatch(update(posts));
 
@@ -70,20 +70,20 @@ const PersonalFeed = () => {
     createComment(postId, comment).then(() => util.updateAll());
   }
 
-  util.dispatchPost = () => {
-    // const createdPost = await createPost(post);
-    const createdPost = {
-      id: "123445",
-      title: "title",
-      postText: "some text here",
-      contentLink: "",
-      contentType: "",
-      date: new Date(),
-      comments: [],
-      authorID: "Aidan",
-      groupID: "",
-      groupName: ""
-    };
+  util.dispatchPost = async () => {
+    const createdPost = await createPost(post);
+    // const createdPost = {
+    //   id: "123445",
+    //   title: "title",
+    //   postText: "some text here",
+    //   contentLink: "",
+    //   contentType: "",
+    //   date: new Date(),
+    //   comments: [],
+    //   authorID: "Aidan",
+    //   groupID: "",
+    //   groupName: ""
+    // };
     
     dispatch(add(createdPost));
   }

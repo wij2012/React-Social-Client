@@ -26,8 +26,8 @@ export default function Upload_Picture(props:any) {
     dataArray.append('file', cjsFile);
     
     try {
-      let resp= await reverbClientUploadFileWithAuth.post("/storage/uploadFile",dataArray);
-      //let data= resp.data;
+      await reverbClientUploadFileWithAuth.post("/storage/uploadFile",dataArray);
+      
       const profileRes = await getProfile();
       dispatch(setProfile(profileRes));
 

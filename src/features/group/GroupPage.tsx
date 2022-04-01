@@ -21,19 +21,20 @@ export default function GroupPage() {
     
     if (name) {
         try {
-          // const group = await getGroupByName(name);
-          const group = {
-            groupID: '12345',
-            owner : {
-              id: '54321',
-              email: 'aidan@mail.com'
-            },
-            name : 'Aidan',
-            description : 'My group',
-            headerImg : '',
-            profilePic : '',
-            joinedUsers : []
-          }
+          const group = await getGroupByName(name);
+          // const group = {
+          //   groupID: '12345',
+          //   owner : {
+          //     id: '54321',
+          //     email: 'aidan@mail.com'
+          //   },
+          //   name : 'Aidan',
+          //   description : 'My group',
+          //   headerImg : '',
+          //   profilePic : '',
+          //   joinedUsers : []
+          // }
+          
           dispatch(setGroup(group));
           setDoneLoading(true);
         } catch (err) {
