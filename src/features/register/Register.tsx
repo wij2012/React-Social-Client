@@ -48,7 +48,7 @@ export default function Register() {
           history.push("/login");
         })
         .catch((error) => {
-          
+          console.log(error);
           const errorCode = error.code.slice(5);
           swal("Uh oh!", errorCode, "error")
         });
