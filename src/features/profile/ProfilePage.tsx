@@ -2,13 +2,11 @@ import ProfileInformation from "./ProfileInformation";
 import SearchBar from "../search/SearchBar";
 import { useParams } from "react-router";
 
-export default function ProfilePage(props: any) {
+export default function ProfilePage({beep}: {beep: boolean}) {
   return(
     <>
       <SearchBar />
-      {console.log(props) }
-      {console.log(useParams)}
-      <ProfileInformation beep={props.beep}/>
+      <ProfileInformation beep={beep}/>
     </>
   )
 }
