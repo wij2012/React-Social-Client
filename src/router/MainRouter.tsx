@@ -1,5 +1,4 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import { useAppDispatch } from "../app/hooks";
 import { logout } from '../features/login/authSlice'
@@ -21,7 +20,7 @@ interface MainRouterProps{
   loggedIn:string
 }
 
-const MainRouter:React.FC<MainRouterProps> = ({loggedIn}:{loggedIn:string}) => {
+const MainRouter= ({loggedIn}: MainRouterProps) => {
   const dispatch = useAppDispatch();
 
   // Logout now dispatching to store to update state
